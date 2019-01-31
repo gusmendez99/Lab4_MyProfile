@@ -25,7 +25,7 @@ private const val ARG_PARAM2 = "param2"
 class WebViewFragment : Fragment() {
 
     companion object {
-        lateinit var webViewRepo:WebView
+        var webViewRepo:WebView? = null
 
         fun newInstance(url:String, title:String): WebViewFragment {
             val args = Bundle()
@@ -48,13 +48,13 @@ class WebViewFragment : Fragment() {
 
         webViewRepo = view.findViewById<View>(R.id.web_view_repo) as WebView
 
-        webViewRepo.loadUrl(arguments!!.getString("url"))
+        webViewRepo!!.loadUrl(arguments!!.getString("url"))
 
-        val webSettings = webViewRepo.settings
+        val webSettings = webViewRepo!!.settings
         webSettings.javaScriptEnabled = true
 
         // Force links and redirects to open in the WebView instead of in a browser
-        webViewRepo.webViewClient = WebViewClient()
+        webViewRepo!!.webViewClient = WebViewClient()
 
         return view
     }

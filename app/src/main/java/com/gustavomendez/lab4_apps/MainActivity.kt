@@ -8,9 +8,11 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBar
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AlertDialog
 import android.view.MenuItem
 import android.widget.Toast
 import com.gustavomendez.lab4_apps.Fragments.HomeFragment
+import com.gustavomendez.lab4_apps.Fragments.MapFragment
 import com.gustavomendez.lab4_apps.Fragments.ProjectFragment
 import com.gustavomendez.lab4_apps.Fragments.WebViewFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -46,18 +48,16 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
 
                 R.id.nav_profile -> {
-                    Toast.makeText(this, "Profile", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this, "Profile", Toast.LENGTH_LONG).show()
                     supportFragmentManager.beginTransaction().replace(R.id.content_frame, HomeFragment()).commit()
                 }
                 R.id.nav_wallet -> {
-                    Toast.makeText(this, "Wallet", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this, "Wallet", Toast.LENGTH_LONG).show()
                     supportFragmentManager.beginTransaction().replace(R.id.content_frame, ProjectFragment()).commit()
                 }
                 R.id.nav_offer -> {
-                    Toast.makeText(this, "Offer", Toast.LENGTH_LONG).show()
-                }
-                R.id.nav_setting -> {
-                    Toast.makeText(this, "Setting", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this, "Offer", Toast.LENGTH_LONG).show()
+                    supportFragmentManager.beginTransaction().replace(R.id.content_frame, MapFragment()).commit()
                 }
             }
             // Add code here to update the UI based on the item selected
@@ -65,6 +65,8 @@ class MainActivity : AppCompatActivity() {
 
             true
         }
+
+        supportFragmentManager.beginTransaction().replace(R.id.content_frame, HomeFragment()).commit()
     }
 
     override fun onAttachFragment(fragment: Fragment?) {
@@ -82,10 +84,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        val webView =
+
         when {
+
             drawer_layout.isDrawerOpen(GravityCompat.START) -> drawer_layout.closeDrawer(GravityCompat.START)
-            WebViewFragment.webViewRepo.canGoBack() -> WebViewFragment.webViewRepo.goBack()
-            else -> super.onBackPressed()
+            (WebViewFragment.webViewRepo != null) && WebViewFragment.webViewRepo!!.canGoBack() -> {
+                WebViewFragment.webViewRepo!!.goBack()
+            }
+            else -> {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Cerrar")
+                builder.setMessage("¿Desea cerrar la app?")
+                //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+                builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+                    super.onBackPressed()
+                }
+
+                builder.setNegativeButton(android.R.string.no) { dialog, which ->
+                    //Nothing to to here...
+                }
+                builder.show()
+            }
         }
     }
 

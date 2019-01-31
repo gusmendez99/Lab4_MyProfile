@@ -10,4 +10,7 @@
     <string name="my_projects">Mis Proyectos</string>
     <string name="navigation_drawer_open">Drawer abierto</string>
     <string name="navigation_drawer_close">Drawer cerrado</string>
+    <string name="home">Inicio</string>
+    <string name="projects">Proyectos</string>
+    <string name="address">Dirección</string>
 </resources>
