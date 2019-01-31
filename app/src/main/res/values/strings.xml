@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Lab4_Apps</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="my_name">Gustavo Mendez</string>
+    <string name="my_projects">Mis Proyectos</string>
+    <string name="navigation_drawer_open">Drawer abierto</string>
+    <string name="navigation_drawer_close">Drawer cerrado</string>
+</resources>
