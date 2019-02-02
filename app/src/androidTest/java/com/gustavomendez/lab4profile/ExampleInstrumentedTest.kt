@@ -1,4 +1,4 @@
-package com.gustavomendez.lab4_apps
+package com.gustavomendez.lab4profile
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

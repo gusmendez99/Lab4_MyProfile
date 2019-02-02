@@ -1,4 +1,4 @@
-package com.gustavomendez.lab4_apps
+package com.gustavomendez.lab4profile
 
 import org.junit.Test
 

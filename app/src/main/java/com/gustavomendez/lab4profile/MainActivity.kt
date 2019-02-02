@@ -1,20 +1,17 @@
-package com.gustavomendez.lab4_apps
+package com.gustavomendez.lab4profile
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBar
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
 import android.view.MenuItem
-import android.widget.Toast
-import com.gustavomendez.lab4_apps.Fragments.HomeFragment
-import com.gustavomendez.lab4_apps.Fragments.MapFragment
-import com.gustavomendez.lab4_apps.Fragments.ProjectFragment
-import com.gustavomendez.lab4_apps.Fragments.WebViewFragment
+import com.gustavomendez.lab4profile.Fragments.HomeFragment
+import com.gustavomendez.lab4profile.Fragments.MapFragment
+import com.gustavomendez.lab4profile.Fragments.ProjectFragment
+import com.gustavomendez.lab4profile.Fragments.WebViewFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -60,8 +57,6 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(R.id.content_frame, MapFragment()).commit()
                 }
             }
-            // Add code here to update the UI based on the item selected
-            // For example, swap UI fragments here
 
             true
         }
@@ -83,9 +78,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //Overriding the method, cos we're gonna manage the WebView back button click
     override fun onBackPressed() {
-        val webView =
-
         when {
 
             drawer_layout.isDrawerOpen(GravityCompat.START) -> drawer_layout.closeDrawer(GravityCompat.START)

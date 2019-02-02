@@ -1,4 +1,4 @@
-package com.gustavomendez.lab4_apps.Fragments
+package com.gustavomendez.lab4profile.Fragments
 
 
 import android.os.Bundle
@@ -8,15 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.gustavomendez.lab4_apps.R
+import com.gustavomendez.lab4profile.R
 import android.view.InflateException
-import android.R.attr.fragment
 import android.util.Log
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.model.CameraPosition
 
 
@@ -50,16 +48,19 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         try {
             rootView = inflater.inflate(R.layout.fragment_map, container, false)
+
+            //Initialize the map
             MapsInitializer.initialize(this.activity!!)
+
+            //Binding Map fragment
             mMapView = rootView.findViewById(R.id.map) as MapView
             mMapView.onCreate(savedInstanceState)
             mMapView.getMapAsync(this)
         } catch (e: InflateException) {
-            Log.e(Companion.TAG, "Inflate exception")
+            Log.e(TAG, "Inflate exception")
         }
 
         return rootView
-
 
     }
 
@@ -88,19 +89,16 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mMapView.onResume()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
     override fun onMapReady(googleMap: GoogleMap){
-
+        //Setting the map instance
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val guatemala = LatLng(14.628434, -90.522713)
+        val guatemala = LatLng(14.604713, -90.489377)
         mMap.addMarker(MarkerOptions().position(guatemala).title("Guatemala City"))
 
-        val cameraPosition = CameraPosition.Builder().target(guatemala).zoom(6.0f).build()
+        //Update camera to new marker
+        val cameraPosition = CameraPosition.Builder().target(guatemala).zoom(7.0f).build()
         val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
         mMap.moveCamera(cameraUpdate)
 

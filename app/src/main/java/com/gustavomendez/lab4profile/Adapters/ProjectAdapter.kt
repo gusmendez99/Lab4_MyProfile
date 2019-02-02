@@ -1,19 +1,19 @@
-package com.gustavomendez.lab4_apps.Adapters
+package com.gustavomendez.lab4profile.Adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gustavomendez.lab4_apps.Model.Project
-import com.gustavomendez.lab4_apps.R
+import com.gustavomendez.lab4profile.Model.Project
+import com.gustavomendez.lab4profile.R
 import kotlinx.android.synthetic.main.project_list_item.view.*
 
 class ProjectAdapter(
     private val items : ArrayList<Project>, private val context: Context,
     private val listener: (Project) -> Unit) : RecyclerView.Adapter<ProjectAdapter.ViewHolder>() {
 
-    // Gets the number of animals in the list
+    // Gets the number of projects in the list
     override fun getItemCount(): Int {
         return items.size
     }
@@ -23,16 +23,18 @@ class ProjectAdapter(
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.project_list_item, parent, false))
     }
 
-    // Binds each animal in the ArrayList to a view
+    // Binds each project in the ArrayList to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(items[position],listener)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        //Filling the ViewHolder with the project info
         fun bindItems(project: Project, listener: (Project) -> Unit) = with(itemView) {
             itemView.tv_project_title.text = project.title
             itemView.tv_project_description.text = project.description
+            //Listener to change to WebView Fragment.
             setOnClickListener { listener(project) }
         }
     }

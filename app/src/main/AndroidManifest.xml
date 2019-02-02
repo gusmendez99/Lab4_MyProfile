@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.gustavomendez.lab4_apps">
+          package="com.gustavomendez.lab4profile">
 
     <!--Permissions-->
 
@@ -23,7 +23,7 @@
 
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDW3-WUs-HpjohKUGgdt0XxrNgTYK-4kqI"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.gustavomendez.lab4profile.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -1,17 +1,16 @@
-package com.gustavomendez.lab4_apps.Fragments
+package com.gustavomendez.lab4profile.Fragments
 
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
-import com.gustavomendez.lab4_apps.R
+import com.gustavomendez.lab4profile.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,6 +27,7 @@ class WebViewFragment : Fragment() {
         var webViewRepo:WebView? = null
 
         fun newInstance(url:String, title:String): WebViewFragment {
+            //Like Singleton, we return an instance filled with the Project info (url, title)
             val args = Bundle()
             args.putString("url", url)
             args.putString("title", title)
@@ -48,6 +48,7 @@ class WebViewFragment : Fragment() {
 
         webViewRepo = view.findViewById<View>(R.id.web_view_repo) as WebView
 
+        //Loads the URL we have passed from the MainActivity as a argument
         webViewRepo!!.loadUrl(arguments!!.getString("url"))
 
         val webSettings = webViewRepo!!.settings
